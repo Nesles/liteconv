@@ -2,7 +2,6 @@ package liteconv
 
 import (
 	"strconv"
-	"fmt"
 )
 
 const _FMT = 'f'
