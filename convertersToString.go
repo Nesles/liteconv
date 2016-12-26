@@ -50,7 +50,7 @@ func Uint64ToString(value uint64) string {
 // ToStringMap interface{} to map[string]string
 func InterfaceToStringMap(i1 interface{}) map[string]string {
 	switch i2 := i1.(type) {
-	case map[string]interface{}
+	case map[string]interface{}:
 		m1 := map[string]string{}
 		for k, v := range i2 {
 			m1[k] = InterfaceToString(v)
