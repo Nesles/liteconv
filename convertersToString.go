@@ -17,15 +17,6 @@ func Float32ToString(value float32) string {
 
 }*/
 
-//Int32ToString - Get string from int32
-func Int32ToString(value int) string  {
-	return 	strconv.Itoa(value)
-}
-
-//Int64ToString - Get string from int64
-func Int64ToString(value int64) string {
-	return strconv.FormatInt(value, 64)
-}
 
 //BoolToString - get string from bool
 func BoolToString(value bool) string  {
@@ -60,32 +51,5 @@ func InterfaceToStringMap(i1 interface{}) map[string]string {
 		return i2
 	default:
 		return map[string]string{}
-	}
-}
-
-
-//InterfaceToString - get string from any value (not for array)
-func InterfaceToString(i interface{}) string {
-	switch value := i.(type) {
-	case string:
-		return string(value)
-	case int:
-		return strconv.Itoa(value)
-	case int64:
-		return strconv.FormatInt(value, 64)
-	//case uint32:
-	case uint64:
-		return strconv.FormatUint(value, 64)
-	//case float32:
-	case float64:
-		return strconv.FormatFloat(value, _FMT, 0, 64)
-	case bool:
-		if value {
-			return "true"
-		}
-		return "false"
-	default:
-		return "";
-
 	}
 }
