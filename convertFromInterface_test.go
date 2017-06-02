@@ -2,7 +2,7 @@ package liteconv
 
 import "testing"
 
-func Test(t *testing.T)  {
+func Test_InterfaceToString(t *testing.T)  {
 
 	if  InterfaceToString(32525) == "32525" {
 		t.Log("INT32-PASS")

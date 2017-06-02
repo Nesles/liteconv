@@ -1,9 +1,6 @@
 package liteconv
 
-import (
-	"strconv"
-//	"Kitana/dbcon"
-)
+import "strconv"
 
 const _FMT = 'f'
 

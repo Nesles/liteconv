@@ -27,3 +27,35 @@ func InterfaceToString(i interface{}) string {
 
 	}
 }
+
+func InterfaceToInt(i interface{}) int {
+
+	switch value := i.(type) {
+	case string:
+		result , err := strconv.Atoi(value)
+		if err!= nil{
+			return 0
+		}
+		return result
+	case int:
+		return value
+	case int64:
+		return int(value)
+	case uint32:
+		return int(value)
+	case uint64:
+		return int(value)
+	case float32:
+		return int(value)
+	case float64:
+		return int(value)
+	case bool:
+		if value {
+			return 1
+		}
+		return 0
+	default:
+		return 0;
+
+	}
+}
