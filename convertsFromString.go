@@ -12,3 +12,12 @@ func StringToFloat64(str string) float64 {
 	return  result
 
 }
+
+func StringToInt32(str string) int  {
+	i, err := strconv.Atoi(str)
+	if err != nil {
+		return 0
+	}
+
+	return i
+}
