@@ -10,13 +10,10 @@ func Int32ToString(value int) string  {
 
 //Int64ToString - Get string from int64
 func Int64ToString(value int64) string {
-	return strconv.FormatInt(value, 64)
+	return strconv.FormatInt(value, _BASE_64)
 }
 
 func Int32ToBool(val int) bool  {
-	if val!=0 {
-		return true
-	}
-	return false
+	return val!=_VAL_FALSE_INT
 }
 

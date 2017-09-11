@@ -8,46 +8,67 @@ import (
 // ToFloat64 converts interface{} to float64
 func InterfaceToFloat64(i1 interface{}) float64 {
 	if i1 == nil {
-		return 0.0
+		return _VAL_FALSE_FLOAT64
 	}
-	switch i2 := i1.(type) {
+	switch value := i1.(type) {
 	default:
-		i3, _ := strconv.ParseFloat(InterfaceToString(i2), 64)
-		return i3
+		result, _ := strconv.ParseFloat(InterfaceToString(value), _BIT_SIZE_64)
+		return result
 	case *json.Number:
-		i3, _ := i2.Float64()
-		return i3
+		result, err := value.Float64()
+		if err != nil {
+			return _VAL_NULL_FLOAT64
+		}
+		return result
 	case json.Number:
-		i3, _ := i2.Float64()
-		return i3
+		result, err := value.Float64()
+		if err != nil {
+			return _VAL_NULL_FLOAT64
+		}
+		return result
 	case int64:
-		return float64(i2)
+		return float64(value)
 	case float32:
-		return float64(i2)
+		return float64(value)
 	case uint64:
-		return float64(i2)
+		return float64(value)
 	case int:
-		return float64(i2)
+		return float64(value)
 	case uint:
-		return float64(i2)
+		return float64(value)
 	case bool:
-		if i2 {
-			return 1.0
+		if value {
+			return _VAL_TRUE_FLOAT64
 		} else {
-			return 0.0
+			return _VAL_FALSE_FLOAT64
 		}
 	case float64:
-		return i2
+		return value
 	case *bool:
-		if i2 == nil {
-			return 0.0
+		if value == nil {
+			return _VAL_FALSE_FLOAT64
 		}
-		if *i2 {
-			return 1.0
+		if *value {
+			return _VAL_TRUE_FLOAT64
 		} else {
-			return 0.0
+			return _VAL_FALSE_FLOAT64
 		}
+	case string:
+		result,err := strconv.ParseFloat(value, _BIT_SIZE_64)
+		if err != nil {
+			return _VAL_NULL_FLOAT64
+		}
+		return result
 	}
-	return 0.0
+	return _VAL_FALSE_FLOAT64
 }
 
+func StringToFloat64(str string) float64 {
+
+	result, err :=strconv.ParseFloat(str, _BIT_SIZE_64)
+	if err!=nil{
+		return 0
+	}
+	return  result
+
+}
