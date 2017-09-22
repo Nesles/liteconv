@@ -174,6 +174,21 @@ func InterfaceToStringMap(some interface{}) map[string]string {
 	}
 }
 
+func InterfaceToIntMap(some interface{}) map[string]int {
+	switch value := some.(type) {
+	case map[string]interface{}:
+		result := map[string]int{}
+		for k, v := range value {
+			result[k] = InterfaceToInt(v)
+		}
+		return result
+	case map[string]int:
+		return value
+	default:
+		return map[string]int{}
+	}
+}
+//InterfaceToArray TODO
 func InterfaceToArray(some interface{}) []interface{}  {
 	//:TODO
 	return *new([]interface{})
